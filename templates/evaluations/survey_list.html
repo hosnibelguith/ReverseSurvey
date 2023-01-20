@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col">
+    <h2 data-aos="fade-up" data-aos-delay="400">Surveys list</h2>
+
+    <table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Nature</th>
+      <th>Created at</th>
+      <th>Created by</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for s in surveys %}
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{s.name}}</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{s.description}}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{s.need_logged_user|yesno:"Private,Public"}}</p>
+      </td>
+      <td><p class="fw-normal mb-1">{{s.publish_date}}</p>
+      </td>
+      </td>
+      <td>
+        <a href="{% url 'SurveysPlus:survey_questions_details' s.id %}"type="button" class="btn btn-link btn-sm btn-rounded">
+          Edit
+        </a>
+      </td>
+
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+      </div>
+</div>
+{% endblock content %}

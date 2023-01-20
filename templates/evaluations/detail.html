@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div class="row">
+        <h2 data-aos="fade-up" data-aos-delay="500">{{survey.title}}</h2>
+
+  <div class="col-6 col-lg-4">
+    <p/>Description: {{survey.description}}</p>
+
+
+  </div>
+  <div class="col-6 col-lg-4">
+      <div class="form-outline mb-4">
+<a href="{% url 'SurveysPlus:question_create' survey_id=survey.id %} " class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" ><i class="fas fa-plus fa-sm text-white-50"></i> Add question</a>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Questions</a>
+  {% for question in questionss %}
+  <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Order:{{question.order}}</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Public/Private:{{question.required|yesno:"Private,Public"}}</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Type: {{question.type}}</a>
+        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Choices{{question.choices}}</a>
+
+
+
+
+
+
+
+  {% empty %}
+
+  <p>No Questions yet</p>
+  {% endfor %}
+
+
+</div>
+  </div>
+
+
+</div>
+  <div class="col-6 col-sm-4"></div>
+</div>
+{% endblock content %}
