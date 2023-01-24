@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from dashing.utils import router
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^survey/', include('survey.urls')),
     path('', include("evaluations.urls")),
+    url(r'^dashboard/', include(router.urls)),
 
 ]

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'evaluations',
     'bootstrapform',
 	'survey',
+    'dashing'
 
 
 
